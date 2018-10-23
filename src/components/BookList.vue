@@ -1,13 +1,13 @@
 <template>
-    <h1>{{ this.title }}</h1>
+    <h1>{{ title }}</h1>
 </template>
 
 <script>
 export default {
     name: 'BookList',
-    data: function(){
+    data(){
         return {
-            title: "All Books"
+            title: "All books"
         }
     }
 }
