@@ -2,17 +2,21 @@
     <div>
         <h1>{{ title }}</h1>
         <ul>
-            <book-item v-for="book in books" v-bind:book="book">{{ book.title }}: {{ book.author }}</book-item>
+            <book-item v-for="book in books" v-bind:book="book" >{{ book.title }}: {{ book.author }}</book-item>
         </ul>
+        <hr>
+        <book-form v-on:addBook="appendBook"></book-form>
     </div>
 </template>
 
 <script>
 import BookItem from './BookItem';
+import BookForm from './BookForm';
 export default {
     name: 'BookList',
     components: {
-        BookItem
+        BookItem,
+        BookForm
     },
     data(){
         return {
@@ -31,6 +35,14 @@ export default {
                     author: 'Neil Postman'
                 },
             ]
+        }
+    },
+    methods: {
+        appendBook(bookTitle, bookAuthor){
+            this.books.push({
+                title: bookTitle,
+                author: bookAuthor
+            })
         }
     }
 }
